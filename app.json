@@ -2,7 +2,7 @@
   "expo": {
     "name": "asp-app",
     "slug": "asp-app",
-    "version": "1.0.0",
+    "version": "3.2.5",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -15,16 +15,29 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.autoformsandsupplies.aspapp",
+      "buildNumber": "3.2.5"
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "foregroundImage": "./assets/icon.png",
+        "backgroundColor": "#ffffff",
+        "versionCode": 3
+      },
+      "package": "com.autoformsandsupplies.aspapp",
+      "versionCode":3
+    },
+    "extra": {
+      "eas": {
+        "projectId": "c3012e31-593c-4eb3-ab2f-8f15f4fb86fc"
       }
     },
-    "web": {
-      "favicon": "./assets/favicon.png"
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/c3012e31-593c-4eb3-ab2f-8f15f4fb86fc"
     }
   }
 }
