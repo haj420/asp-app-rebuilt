@@ -1,16 +1,18 @@
-import 'react-native-gesture-handler';
+import 'react-native';
 import React, {Component, useEffect, useState } from 'react';
-import { ImageBackground, Button, View, Text, StyleSheet, TouchableOpacity, Image, Linking, StatusBar, SafeAreaView, ScrollView, ActivityIndicator} from 'react-native';
+import { ImageBackground, Button, View, Text, StyleSheet, TouchableOpacity, Image, Linking, StatusBar, SafeAreaView, ScrollView, ActivityIndicator, useWindowDimensions, Platform} from 'react-native';
 import * as WebBrowser from 'expo-web-browser';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Pdf from 'react-native-pdf';
+
 
 // BRANDS SCREEN
 function BrandsScreen({ navigation }) {
 console.log('brands screen');
 	return (
-		<ScrollView style={{backgroundColor:'white'}}>
-		<View style={{flex:1, backgroundColor:'white'}}>
+		<ScrollView style={{backgroundColor:'grey'}}>
+		<View style={{flex:1,backgroundColor:'white'}}>
 			<View style={{ height:50, backgroundColor: 'red' }} />
 			<TouchableOpacity
 			  onPress={() =>{navigation.push('Home')}}>
@@ -19,20 +21,20 @@ console.log('brands screen');
 	        <Image source={require('./assets/ASP-logo-black-red-PMS1788-1inDistCare-150dpi.png')} style={styles.brandsBanner, {alignSelf:'center', marginTop:'5%'}} />
 			<View style={{borderTopColor:'black', borderTopWidth:1, height:'5%', marginTop:30, marginBottom:0}} />
 			<TouchableOpacity
-			  onPress={() =>{ WebBrowser.openBrowserAsync("https://www.autoserviceproducts.com/wp-content/uploads/ASP_product-brand-guide_031721.pdf")}}>
+			  onPress={() =>{Linking.openURL("https://www.autoserviceproducts.com/wp-content/uploads/ASP_product-brand-guide_031721.pdf")}}>
 				<Image source={require('./assets/ourBrands.png')} style={{alignSelf:'flex-end', height:45, width:260, marginTop:0, alignSelf:'center'}} />
 			</TouchableOpacity>
 
 			<View style={{flex: 1, flexDirection: 'row'}}>
 			   <View style={{width: '50%', height:100, justifyContent:'center'}} >
 			   <TouchableOpacity style={styles.brandsBtn}
-				 onPress={() =>{ WebBrowser.openBrowserAsync("https://www.autoserviceproducts.com/wp-content/uploads/CAATS-Brand-Sheet-210601.pdf")}}>
+				 onPress={() =>{Linking.openURL("https://www.autoserviceproducts.com/wp-content/uploads/CAATS-Brand-Sheet-210601.pdf")}}>
 				   <Image source={require('./assets/CAATS.png')} style={styles.brandsScreenButton}/>
 			   </TouchableOpacity>
 			   </View>
 			   <View style={{width: '50%', height:100, justifyContent:'center'}}>
 			   <TouchableOpacity style={styles.brandsBtn}
-				 onPress={() =>{ WebBrowser.openBrowserAsync("https://www.autoserviceproducts.com/wp-content/uploads/TruForm-Brand-Sheet-210716-flattened.pdf")}}>
+				 onPress={() =>{Linking.openURL("https://www.autoserviceproducts.com/wp-content/uploads/TruForm-Brand-Sheet-210716-flattened.pdf")}}>
 				   <Image source={require('./assets/TruForm.jpeg')} style={styles.brandsScreenButton}/>
 			   </TouchableOpacity>
 			   </View>
@@ -40,13 +42,13 @@ console.log('brands screen');
 			 <View style={{flex: 1, flexDirection: 'row'}}>
  			   <View style={{width: '50%', height:100, justifyContent:'center'}} >
  			   <TouchableOpacity style={styles.brandsBtn}
- 				 onPress={() =>{ WebBrowser.openBrowserAsync("https://www.autoserviceproducts.com/wp-content/uploads/Heavy-Brite-Brand-Sheet-210706-flattened.pdf")}}>
+ 				 onPress={() =>{ Linking.openURL("https://www.autoserviceproducts.com/wp-content/uploads/Heavy-Brite-Brand-Sheet-210706-flattened.pdf")}}>
  				   <Image source={require('./assets/HeavyBrite.png')} style={styles.brandsScreenButton}/>
  			   </TouchableOpacity>
  			   </View>
  			   <View style={{width: '50%', height:100, justifyContent:'center'}}>
  			   <TouchableOpacity style={styles.brandsBtn}
- 				 onPress={() =>{ WebBrowser.openBrowserAsync("https://www.autoserviceproducts.com/wp-content/uploads/Safe-Shield-Brand-Sheet-210716-flattened.pdf")}}>
+ 				 onPress={() =>{ Linking.openURL("https://www.autoserviceproducts.com/wp-content/uploads/Safe-Shield-Brand-Sheet-210716-flattened.pdf")}}>
  				   <Image source={require('./assets/SafeShield.jpeg')} style={styles.brandsScreenButton}/>
  			   </TouchableOpacity>
  			   </View>
@@ -54,13 +56,13 @@ console.log('brands screen');
 			 <View style={{flex: 1, flexDirection: 'row'}}>
  			   <View style={{width: '50%', height:100, justifyContent:'center'}} >
  			   <TouchableOpacity style={styles.brandsBtn}
- 				 onPress={() =>{ WebBrowser.openBrowserAsync("https://www.autoserviceproducts.com/wp-content/uploads/AdVer-Tag-Brand-Sheet-210716-flattened.pdf")}}>
+ 				 onPress={() =>{ Linking.openURL("https://www.autoserviceproducts.com/wp-content/uploads/AdVer-Tag-Brand-Sheet-210716-flattened.pdf")}}>
  				   <Image source={require('./assets/AdVerTag.png')} style={styles.brandsScreenButton}/>
  			   </TouchableOpacity>
  			   </View>
  			   <View style={{width: '50%', height:100, justifyContent:'center'}}>
  			   <TouchableOpacity style={styles.brandsBtn}
- 				 onPress={() =>{ WebBrowser.openBrowserAsync("https://www.autoserviceproducts.com/wp-content/uploads/ViZi-Brand-Sheet-210601-flattened.pdf")}}>
+ 				 onPress={() =>{ Linking.openURL("https://www.autoserviceproducts.com/wp-content/uploads/ViZi-Brand-Sheet-210601-flattened.pdf")}}>
  				   <Image source={require('./assets/Vizilogo.png')} style={styles.brandsScreenButton}/>
  			   </TouchableOpacity>
  			   </View>
@@ -68,13 +70,13 @@ console.log('brands screen');
 			 <View style={{flex: 1, flexDirection: 'row'}}>
  			   <View style={{width: '50%', height:100, justifyContent:'center'}} >
  			   <TouchableOpacity style={styles.brandsBtn}
- 				 onPress={() =>{ WebBrowser.openBrowserAsync("https://www.autoserviceproducts.com/wp-content/uploads/Peel-n-Seal-Brand-Sheet-210716-flattened.pdf")}}>
+ 				 onPress={() =>{ Linking.openURL("https://www.autoserviceproducts.com/wp-content/uploads/Peel-n-Seal-Brand-Sheet-210716-flattened.pdf")}}>
  				   <Image source={require('./assets/PeelNSeal.png')} style={styles.brandsScreenButton}/>
  			   </TouchableOpacity>
  			   </View>
  			   <View style={{width: '50%', height:100, justifyContent:'center'}}>
  			   <TouchableOpacity style={styles.brandsBtn}
- 				 onPress={() =>{ WebBrowser.openBrowserAsync("https://www.autoserviceproducts.com/wp-content/uploads/File-Right-Brand-Sheet-210601-flattened.pdf")}}>
+ 				 onPress={() =>{ Linking.openURL("https://www.autoserviceproducts.com/wp-content/uploads/File-Right-Brand-Sheet-210601-flattened.pdf")}}>
  				   <Image source={require('./assets/fileRight.png')} style={styles.brandsScreenButton}/>
  			   </TouchableOpacity>
  			   </View>
@@ -87,10 +89,166 @@ console.log('brands screen');
   );
 }
 
+// Brands PDF SCREEN
+function PDFScreenBrands({ navigation }) {
+  return (
+    <View style={styles.container}>
+      <TouchableOpacity
+			  onPress={() =>{navigation.push('Home')}}>
+				<Image source={require('./assets/hamburgerMenu.png')} style={{alignSelf:'flex-end'}} />
+			</TouchableOpacity>
+        <Pdf
+            source={brandGuide}
+            onError={(error) => {
+                console.log(error);
+            }}
+            style={styles.pdf}/>
+    </View>
+  );
+}
+// Caats PDF SCREEN
+function PDFScreenCaats({ navigation }) {
+  return (
+    <View style={styles.container}>
+      <TouchableOpacity
+			  onPress={() =>{navigation.push('Home')}}>
+				<Image source={require('./assets/hamburgerMenu.png')} style={{alignSelf:'flex-end'}} />
+			</TouchableOpacity>
+        <Pdf
+            source={caatsSource}
+            onError={(error) => {
+                console.log(error);
+            }}
+            style={styles.pdf}/>
+    </View>
+  );
+}
+// Truform PDF SCREEN
+function PDFScreenTru({ navigation }) {
+  return (
+    <View style={styles.container}>
+      <TouchableOpacity
+			  onPress={() =>{navigation.push('Home')}}>
+				<Image source={require('./assets/hamburgerMenu.png')} style={{alignSelf:'flex-end'}} />
+			</TouchableOpacity>
+        <Pdf
+            source={truFormSource}
+            onError={(error) => {
+                console.log(error);
+            }}
+            style={styles.pdf}/>
+    </View>
+  );
+}
+// HeavyBrite PDF SCREEN
+function PDFScreenHeavy({ navigation }) {
+  return (
+    <View style={styles.container}>
+      <TouchableOpacity
+			  onPress={() =>{navigation.push('Home')}}>
+				<Image source={require('./assets/hamburgerMenu.png')} style={{alignSelf:'flex-end'}} />
+			</TouchableOpacity>
+        <Pdf
+            source={heavyBriteSource}
+            onError={(error) => {
+                console.log(error);
+            }}
+            style={styles.pdf}/>
+    </View>
+  );
+}
+// SafeShield PDF SCREEN
+function PDFScreenSafe({ navigation }) {
+  return (
+    <View style={styles.container}>
+      <TouchableOpacity
+			  onPress={() =>{navigation.push('Home')}}>
+				<Image source={require('./assets/hamburgerMenu.png')} style={{alignSelf:'flex-end'}} />
+			</TouchableOpacity>
+        <Pdf
+            source={safeShieldSource}
+            onError={(error) => {
+                console.log(error);
+            }}
+            style={styles.pdf}/>
+    </View>
+  );
+}
+// Advertag PDF SCREEN
+function PDFScreenAdvertag({ navigation }) {
+  return (
+    <View style={styles.container}>
+      <TouchableOpacity
+			  onPress={() =>{navigation.push('Home')}}>
+				<Image source={require('./assets/hamburgerMenu.png')} style={{alignSelf:'flex-end'}} />
+			</TouchableOpacity>
+        <Pdf
+            source={advertagSource}
+            onError={(error) => {
+                console.log(error);
+            }}
+            style={styles.pdf}/>
+    </View>
+  );
+}
+// Vizi PDF SCREEN
+function PDFScreenVizi({ navigation }) {
+  return (
+    <View style={styles.container}>
+      <TouchableOpacity
+			  onPress={() =>{navigation.push('Home')}}>
+				<Image source={require('./assets/hamburgerMenu.png')} style={{alignSelf:'flex-end'}} />
+			</TouchableOpacity>
+        <Pdf
+            source={viziSource}
+            onError={(error) => {
+                console.log(error);
+            }}
+            style={styles.pdf}/>
+    </View>
+  );
+}
+// PeelnSeal PDF SCREEN
+function PDFScreenPeel({ navigation }) {
+  return (
+    <View style={styles.container}>
+      <TouchableOpacity
+			  onPress={() =>{navigation.push('Home')}}>
+				<Image source={require('./assets/hamburgerMenu.png')} style={{alignSelf:'flex-end'}} />
+			</TouchableOpacity>
+        <Pdf
+            source={peelnsealSource}
+            onError={(error) => {
+                console.log(error);
+            }}
+            style={styles.pdf}/>
+    </View>
+  );
+}
+// FileRite PDF SCREEN
+function PDFScreenFile({ navigation }) {
+  return (
+    <View style={styles.container}>
+      <TouchableOpacity
+			  onPress={() =>{navigation.push('Home')}}>
+				<Image source={require('./assets/hamburgerMenu.png')} style={{alignSelf:'flex-end'}} />
+			</TouchableOpacity>
+        <Pdf
+            source={filerightSource}
+            onError={(error) => {
+                console.log(error);
+            }}
+            style={styles.pdf}/>
+    </View>
+  );
+}
+
 // HOME SCREEN  (Now the menu screen)
 function HomeScreen({ navigation }) {
+  const {height, width, scale, fontScale} = useWindowDimensions();
   return (
-	    <View style={styles.container}>
+    <ScrollView>
+	    <View style={styles.container, {width: width, height:height}}>
 			<View style={{ height:50, backgroundColor: 'red' }} />
 			<View style={{flexDirection: 'row'}}>
 			   <View style={{width: '20%', height:100, justifyContent:'center'}} >
@@ -100,10 +258,10 @@ function HomeScreen({ navigation }) {
 				   </TouchableOpacity>
 			   </View>
 		   	   <View style={{width: '60%', height:100, justifyContent:'center'}} >
-				   <Text style={{alignSelf:'center', fontSize:20}}>
-				   Menu
-				   </Text>
-			   </View>
+				    <Text style={{alignSelf:'center', fontSize:20}}>
+				    Menu
+				    </Text>
+			     </View>
 		  	</View>
 		        <Image source={require('./assets/aspBanner.png')} style={styles.logoBanner} />
 
@@ -143,6 +301,7 @@ function HomeScreen({ navigation }) {
 		        <Image source={require('./assets/contactBtn.png')} style={styles.HomeScreenButton}/>
 		        </TouchableOpacity>
 	    </View>
+      </ScrollView>
   );
 }
 
@@ -207,11 +366,11 @@ function BeSocialScreen({ navigation }) {
       <View style={{justifyContent: 'center', flexDirection:'row'}}>
       <TouchableOpacity
       onPress={() => Linking.openURL('https://www.facebook.com/AutoServiceProducts')}>
-      <Image source={require('./assets/f_logo_RGB-Blue_58.png')} style={{alignSelf:'center',top:200,width:130}}/>
+      <Image source={require('./assets/f_logo_RGB-Blue_58.png')} style={{alignSelf:'center'}}/>
       </TouchableOpacity>
       <TouchableOpacity
       onPress={() => Linking.openURL('https://www.linkedin.com/company/automotive-service-products/about/')}>
-      <Image source={require('./assets/LinkedIn.png')} style={{alignSelf:'center',top:200, width:130, height:130}}/>
+      <Image source={require('./assets/LinkedIn.png')} style={{alignSelf:'center'}}/>
       </TouchableOpacity>
       </View>
     </View>
@@ -312,6 +471,15 @@ function App() {
     <NavigationContainer screenOptions={{headerTransparent: true}} >
       <Stack.Navigator initialRouteName="BrandsScreen" screenOptions={{headerShown: false, headerTransparent: true}}>
         <Stack.Screen name="BrandsScreen" component={BrandsScreen}/>
+        <Stack.Screen name="pdfPageBrands" component={PDFScreenBrands} />
+        <Stack.Screen name="pdfPageCaats" component={PDFScreenCaats} />
+        <Stack.Screen name="pdfPageTru" component={PDFScreenTru} />
+        <Stack.Screen name="pdfPageHeavy" component={PDFScreenHeavy} />
+        <Stack.Screen name="pdfPageSafe" component={PDFScreenSafe} />
+        <Stack.Screen name="pdfPageAdvertag" component={PDFScreenAdvertag} /> 
+        <Stack.Screen name="pdfPageVizi" component={PDFScreenVizi} />
+        <Stack.Screen name="pdfPagePeel" component={PDFScreenPeel} />
+        <Stack.Screen name="pdfPageFile" component={PDFScreenFile} />
         <Stack.Screen name="Home" component={HomeScreen}/>
         <Stack.Screen name="SendPhoto" component={SendPhotoScreen} />
         <Stack.Screen name="BeSocial" component={BeSocialScreen} />
@@ -339,7 +507,7 @@ const styles = StyleSheet.create({
        padding: 10,
   },
   container: {
-    flex: 1,
+    flex: 3,
     backgroundColor: 'white',
   },
   Background: {
@@ -487,6 +655,10 @@ const styles = StyleSheet.create({
 	height:100,
 	alignItems: 'center',
 	justifyContent: 'center'
+  },
+  pdf: {
+    flex: 1, 
+    alignSelf: "stretch"
   }
 });
 export default App;

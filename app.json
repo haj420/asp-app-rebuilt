@@ -2,7 +2,7 @@
   "expo": {
     "name": "asp-app",
     "slug": "asp-app",
-    "version": "3.2.5",
+    "version": "5.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -17,16 +17,16 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.autoformsandsupplies.aspapp",
-      "buildNumber": "3.2.5"
+      "buildNumber": "5.0.0"
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/icon.png",
+        "foregroundImage": "./assets/ASP_120x120_android_3x.png",
         "backgroundColor": "#ffffff",
-        "versionCode": 3
+        "versionCode": 5
       },
       "package": "com.autoformsandsupplies.aspapp",
-      "versionCode":3
+      "versionCode": 5
     },
     "extra": {
       "eas": {
