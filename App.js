@@ -1,10 +1,12 @@
 import 'react-native';
-import React, {Component, useEffect, useState } from 'react';
+import React, {Component, useEffect, useState, useRef } from 'react';
 import { ImageBackground, Button, View, Text, StyleSheet, TouchableOpacity, Image, Linking, StatusBar, SafeAreaView, ScrollView, ActivityIndicator, useWindowDimensions, Platform} from 'react-native';
 import * as WebBrowser from 'expo-web-browser';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import Pdf from 'react-native-pdf';
+import MapView from 'react-native-maps';
+import { WebView } from 'react-native-webview';
+// import Pdf from 'react-native-pdf';
 
 
 // BRANDS SCREEN
@@ -16,7 +18,7 @@ console.log('brands screen');
 			<View style={{ height:50, backgroundColor: 'red' }} />
 			<TouchableOpacity
 			  onPress={() =>{navigation.push('Home')}}>
-				<Image source={require('./assets/hamburgerMenu.png')} style={{alignSelf:'flex-end'}} />
+				<Image source={require('./assets/hamburgerMenu.png')} style={{alignSelf:'flex-start'}} />
 			</TouchableOpacity>
 	        <Image source={require('./assets/ASP-logo-black-red-PMS1788-1inDistCare-150dpi.png')} style={styles.brandsBanner, {alignSelf:'center', marginTop:'5%'}} />
 			<View style={{borderTopColor:'black', borderTopWidth:1, height:'5%', marginTop:30, marginBottom:0}} />
@@ -89,175 +91,24 @@ console.log('brands screen');
   );
 }
 
-// Brands PDF SCREEN
-function PDFScreenBrands({ navigation }) {
-  return (
-    <View style={styles.container}>
-      <TouchableOpacity
-			  onPress={() =>{navigation.push('Home')}}>
-				<Image source={require('./assets/hamburgerMenu.png')} style={{alignSelf:'flex-end'}} />
-			</TouchableOpacity>
-        <Pdf
-            source={brandGuide}
-            onError={(error) => {
-                console.log(error);
-            }}
-            style={styles.pdf}/>
-    </View>
-  );
-}
-// Caats PDF SCREEN
-function PDFScreenCaats({ navigation }) {
-  return (
-    <View style={styles.container}>
-      <TouchableOpacity
-			  onPress={() =>{navigation.push('Home')}}>
-				<Image source={require('./assets/hamburgerMenu.png')} style={{alignSelf:'flex-end'}} />
-			</TouchableOpacity>
-        <Pdf
-            source={caatsSource}
-            onError={(error) => {
-                console.log(error);
-            }}
-            style={styles.pdf}/>
-    </View>
-  );
-}
-// Truform PDF SCREEN
-function PDFScreenTru({ navigation }) {
-  return (
-    <View style={styles.container}>
-      <TouchableOpacity
-			  onPress={() =>{navigation.push('Home')}}>
-				<Image source={require('./assets/hamburgerMenu.png')} style={{alignSelf:'flex-end'}} />
-			</TouchableOpacity>
-        <Pdf
-            source={truFormSource}
-            onError={(error) => {
-                console.log(error);
-            }}
-            style={styles.pdf}/>
-    </View>
-  );
-}
-// HeavyBrite PDF SCREEN
-function PDFScreenHeavy({ navigation }) {
-  return (
-    <View style={styles.container}>
-      <TouchableOpacity
-			  onPress={() =>{navigation.push('Home')}}>
-				<Image source={require('./assets/hamburgerMenu.png')} style={{alignSelf:'flex-end'}} />
-			</TouchableOpacity>
-        <Pdf
-            source={heavyBriteSource}
-            onError={(error) => {
-                console.log(error);
-            }}
-            style={styles.pdf}/>
-    </View>
-  );
-}
-// SafeShield PDF SCREEN
-function PDFScreenSafe({ navigation }) {
-  return (
-    <View style={styles.container}>
-      <TouchableOpacity
-			  onPress={() =>{navigation.push('Home')}}>
-				<Image source={require('./assets/hamburgerMenu.png')} style={{alignSelf:'flex-end'}} />
-			</TouchableOpacity>
-        <Pdf
-            source={safeShieldSource}
-            onError={(error) => {
-                console.log(error);
-            }}
-            style={styles.pdf}/>
-    </View>
-  );
-}
-// Advertag PDF SCREEN
-function PDFScreenAdvertag({ navigation }) {
-  return (
-    <View style={styles.container}>
-      <TouchableOpacity
-			  onPress={() =>{navigation.push('Home')}}>
-				<Image source={require('./assets/hamburgerMenu.png')} style={{alignSelf:'flex-end'}} />
-			</TouchableOpacity>
-        <Pdf
-            source={advertagSource}
-            onError={(error) => {
-                console.log(error);
-            }}
-            style={styles.pdf}/>
-    </View>
-  );
-}
-// Vizi PDF SCREEN
-function PDFScreenVizi({ navigation }) {
-  return (
-    <View style={styles.container}>
-      <TouchableOpacity
-			  onPress={() =>{navigation.push('Home')}}>
-				<Image source={require('./assets/hamburgerMenu.png')} style={{alignSelf:'flex-end'}} />
-			</TouchableOpacity>
-        <Pdf
-            source={viziSource}
-            onError={(error) => {
-                console.log(error);
-            }}
-            style={styles.pdf}/>
-    </View>
-  );
-}
-// PeelnSeal PDF SCREEN
-function PDFScreenPeel({ navigation }) {
-  return (
-    <View style={styles.container}>
-      <TouchableOpacity
-			  onPress={() =>{navigation.push('Home')}}>
-				<Image source={require('./assets/hamburgerMenu.png')} style={{alignSelf:'flex-end'}} />
-			</TouchableOpacity>
-        <Pdf
-            source={peelnsealSource}
-            onError={(error) => {
-                console.log(error);
-            }}
-            style={styles.pdf}/>
-    </View>
-  );
-}
-// FileRite PDF SCREEN
-function PDFScreenFile({ navigation }) {
-  return (
-    <View style={styles.container}>
-      <TouchableOpacity
-			  onPress={() =>{navigation.push('Home')}}>
-				<Image source={require('./assets/hamburgerMenu.png')} style={{alignSelf:'flex-end'}} />
-			</TouchableOpacity>
-        <Pdf
-            source={filerightSource}
-            onError={(error) => {
-                console.log(error);
-            }}
-            style={styles.pdf}/>
-    </View>
-  );
-}
-
 // HOME SCREEN  (Now the menu screen)
 function HomeScreen({ navigation }) {
   const {height, width, scale, fontScale} = useWindowDimensions();
   return (
-    <ScrollView>
-	    <View style={styles.container, {width: width, height:height}}>
+  <ScrollView
+  style={styles.scrollView} 
+  contentContainerStyle={styles.contentContainer}
+  >
+	    <View style={{width: width, marginBottom: 50}}>
 			<View style={{ height:50, backgroundColor: 'red' }} />
 			<View style={{flexDirection: 'row'}}>
-			   <View style={{width: '20%', height:100, justifyContent:'center'}} >
+			   {/* <View style={{width: '20%', height:100, justifyContent:'center'}} >
 				   <TouchableOpacity
 					 onPress={() =>{navigation.push('BrandsScreen')}}>
 				   <Image source={require('./assets/backArrow.png')} style={{alignSelf:'flex-start'}}/>
 				   </TouchableOpacity>
-			   </View>
-		   	   <View style={{width: '60%', height:100, justifyContent:'center'}} >
+			   </View> */}
+		   	   <View style={{width: '100%', height:100, justifyContent:'center'}} >
 				    <Text style={{alignSelf:'center', fontSize:20}}>
 				    Menu
 				    </Text>
@@ -276,6 +127,12 @@ function HomeScreen({ navigation }) {
 		          onPress={() =>{ WebBrowser.openBrowserAsync("https://autoformsandsupplies.cld.bz/AUTO-CAT-2021")}}>
 		        <Image source={require('./assets/catalogBtn.png')} style={styles.HomeScreenButton}/>
 		        </TouchableOpacity>
+
+            {/* Webview Version */}
+            <TouchableOpacity
+		          onPress={() =>{navigation.push('CatSearchScreen')}}>
+            <Image source={require('./assets/catalogBtn.png')} style={styles.HomeScreenButton}/>
+            </TouchableOpacity>
 
 
 		        <TouchableOpacity
@@ -300,10 +157,84 @@ function HomeScreen({ navigation }) {
 		          onPress={() =>{navigation.push('ContactUs')}}>
 		        <Image source={require('./assets/contactBtn.png')} style={styles.HomeScreenButton}/>
 		        </TouchableOpacity>
+
+
+            <TouchableOpacity
+              onPress={() =>{navigation.push('BrandsScreen')}}>
+            <Image source={require('./assets/ourBrandsBtn.png')} style={styles.HomeScreenButton}/>
+            </TouchableOpacity>
+
+
+            <TouchableOpacity
+		          onPress={() =>{ WebBrowser.openBrowserAsync("https://www.google.com/maps/search/?api=1&query=Automotive+Dealerships+near+me")}}>
+            <Image source={require('./assets/lookupBtn.png')} style={styles.HomeScreenButton}/>
+            </TouchableOpacity>
 	    </View>
       </ScrollView>
   );
 }
+
+function CatSearchScreen({ navigation }) {
+  const webViewRef = useRef(null);
+
+  const handleGetUrl = () => {
+    if (webViewRef.current) {
+      // Improved error handling and user feedback
+      webViewRef.current.injectJavaScript(`
+        (function() {
+          try {
+            const url = window.location.href;
+            if (url) {
+              ReactNativeWebView.postMessage(JSON.stringify({ url }));
+            } else {
+              alert('Unable to retrieve current URL.');
+            }
+          } catch (error) {
+            console.error('Error getting URL:', error);
+            alert('An error occurred while retrieving the URL.');
+          }
+        })();
+      `);
+    } else {
+      console.error('WebView ref not available.');
+    }
+  };
+    return (
+      <View style={styles.container, {flex:1, backgroundColor: 'white'}}>
+        <View style={{ height:50, backgroundColor: 'red' }} />
+          <View style={{flexDirection: 'row'}}>
+            <View style={{width: '20%', height:100, justifyContent:'center'}} >
+            <TouchableOpacity
+              onPress={() =>{navigation.push('Home')}}>
+              <Image source={require('./assets/hamburgerMenu.png')} 
+              style={{alignSelf:'flex-end'}} />
+            </TouchableOpacity>
+            </View>
+            <View style={{width: '60%', height:100, justifyContent:'center'}} >
+              {/* <Button style={styles.button}
+              title="Send Link"
+              onPress={() => Linking.openURL("mailto:CustomerService@AutoServiceProducts.com") }
+              /> */}
+            </View>
+        </View>
+        <WebView
+          ref={webViewRef}
+          source={{ uri: 'https://autoformsandsupplies.cld.bz/AUTO-CAT-2021' }}
+          // source={{ uri: 'https://google.com' }}
+          javaScriptEnabled = {true}
+          onMessage={(event) => {
+            const data = JSON.parse(event.nativeEvent.data);
+            if (data.url) {
+              console.log('Current URL:', data.url);
+              Linking.openURL("mailto:wkstart@startadvertising.com?subject=Products you are interested in&body=Check out this link: https://autoformsandsupplies.com?appLink=" + data.url);
+            }
+          }}
+        />
+        <Button title="Get Current URL" onPress={handleGetUrl} />
+      </View>
+  );
+}
+
 
 function SendPhotoScreen({ navigation }) {
 // SEND PHOTO SCREEN
@@ -314,9 +245,9 @@ function SendPhotoScreen({ navigation }) {
    <View style={{width: '20%', height:100, justifyContent:'center'}} >
 
    <TouchableOpacity
-	 onPress={() =>{navigation.push('Home')}}>
-   <Image source={require('./assets/backArrow.png')} style={{alignSelf:'flex-start'}}/>
-   </TouchableOpacity>
+			  onPress={() =>{navigation.push('Home')}}>
+				<Image source={require('./assets/hamburgerMenu.png')} style={{alignSelf:'flex-end'}} />
+			</TouchableOpacity>
    </View>
    <View style={{width: '60%', height:100, justifyContent:'center'}} >
    <Text style={{alignSelf:'center', fontSize:20}}>
@@ -345,9 +276,9 @@ function BeSocialScreen({ navigation }) {
 <View style={{flexDirection: 'row'}}>
    <View style={{width: '20%', height:100, justifyContent:'center'}} >
    <TouchableOpacity
-	 onPress={() =>{navigation.push('Home')}}>
-   <Image source={require('./assets/backArrow.png')} style={{alignSelf:'flex-start'}}/>
-   </TouchableOpacity>
+			  onPress={() =>{navigation.push('Home')}}>
+				<Image source={require('./assets/hamburgerMenu.png')} style={{alignSelf:'flex-end'}} />
+			</TouchableOpacity>
    </View>
    <View style={{width: '60%', height:100, justifyContent:'center'}} >
    <Text style={{alignSelf:'center', fontSize:20}}>
@@ -387,9 +318,9 @@ function ContactUsScreen({ navigation }) {
 	  <View style={{flexDirection: 'row'}}>
 		 <View style={{width: '20%', height:100, justifyContent:'center'}} >
 		 <TouchableOpacity
-		   onPress={() =>{navigation.push('Home')}}>
-		 <Image source={require('./assets/backArrow.png')} style={{alignSelf:'flex-start'}}/>
-		 </TouchableOpacity>
+			  onPress={() =>{navigation.push('Home')}}>
+				<Image source={require('./assets/hamburgerMenu.png')} style={{alignSelf:'flex-end'}} />
+			</TouchableOpacity>
 		 </View>
 		 <View style={{width: '60%', height:100, justifyContent:'center'}} >
 		 <Text style={{alignSelf:'center', fontSize:20}}>
@@ -469,18 +400,10 @@ function App() {
 
   return (
     <NavigationContainer screenOptions={{headerTransparent: true}} >
-      <Stack.Navigator initialRouteName="BrandsScreen" screenOptions={{headerShown: false, headerTransparent: true}}>
+      <Stack.Navigator initialRouteName="Home" screenOptions={{headerShown: false, headerTransparent: true}}>
         <Stack.Screen name="BrandsScreen" component={BrandsScreen}/>
-        <Stack.Screen name="pdfPageBrands" component={PDFScreenBrands} />
-        <Stack.Screen name="pdfPageCaats" component={PDFScreenCaats} />
-        <Stack.Screen name="pdfPageTru" component={PDFScreenTru} />
-        <Stack.Screen name="pdfPageHeavy" component={PDFScreenHeavy} />
-        <Stack.Screen name="pdfPageSafe" component={PDFScreenSafe} />
-        <Stack.Screen name="pdfPageAdvertag" component={PDFScreenAdvertag} /> 
-        <Stack.Screen name="pdfPageVizi" component={PDFScreenVizi} />
-        <Stack.Screen name="pdfPagePeel" component={PDFScreenPeel} />
-        <Stack.Screen name="pdfPageFile" component={PDFScreenFile} />
         <Stack.Screen name="Home" component={HomeScreen}/>
+        <Stack.Screen name="CatSearchScreen" component={CatSearchScreen}/>
         <Stack.Screen name="SendPhoto" component={SendPhotoScreen} />
         <Stack.Screen name="BeSocial" component={BeSocialScreen} />
         <Stack.Screen name="ContactUs" component={ContactUsScreen} />
@@ -509,6 +432,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 3,
     backgroundColor: 'white',
+    marginBottom: '50',
   },
   Background: {
     flex: 1,
@@ -659,6 +583,21 @@ const styles = StyleSheet.create({
   pdf: {
     flex: 1, 
     alignSelf: "stretch"
+  },
+  map: {
+    width: '100%',
+    height: '100%',
+  }, 
+  scrollView: {
+    height: '100%',
+    width: '100%',
+    margin: 20,
+    alignSelf: 'center',
+  },
+  contentContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingBottom: 50
   }
 });
 export default App;
