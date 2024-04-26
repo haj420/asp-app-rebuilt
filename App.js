@@ -1,6 +1,5 @@
-import 'react-native';
 import React, {Component, useEffect, useState, useRef } from 'react';
-import { ImageBackground, Button, View, Text, StyleSheet, TouchableOpacity, Image, Linking, StatusBar, SafeAreaView, ScrollView, ActivityIndicator, useWindowDimensions, Platform} from 'react-native';
+import { Alert, ImageBackground, Button, View, Text, StyleSheet, TouchableOpacity, Image, Linking, StatusBar, SafeAreaView, ScrollView, ActivityIndicator, useWindowDimensions, Platform} from 'react-native';
 import * as WebBrowser from 'expo-web-browser';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -122,12 +121,6 @@ function HomeScreen({ navigation }) {
 		        <Image source={require('./assets/aspConnectBtn.png')} style={styles.TopHomeScreenButton}/>
 		        </TouchableOpacity>
 
-
-		        <TouchableOpacity
-		          onPress={() =>{ WebBrowser.openBrowserAsync("https://autoformsandsupplies.cld.bz/AUTO-CAT-2021")}}>
-		        <Image source={require('./assets/catalogBtn.png')} style={styles.HomeScreenButton}/>
-		        </TouchableOpacity>
-
             {/* Webview Version */}
             <TouchableOpacity
 		          onPress={() =>{navigation.push('CatSearchScreen')}}>
@@ -210,27 +203,34 @@ function CatSearchScreen({ navigation }) {
               style={{alignSelf:'flex-end'}} />
             </TouchableOpacity>
             </View>
-            <View style={{width: '60%', height:100, justifyContent:'center'}} >
-              {/* <Button style={styles.button}
-              title="Send Link"
-              onPress={() => Linking.openURL("mailto:CustomerService@AutoServiceProducts.com") }
-              /> */}
+            <View style={{width: '60%', height:100, justifyContent:'center', paddingLeft: 30}} >
+            <TouchableOpacity
+		          onPress={handleGetUrl}>
+              <Image source={require('./assets/shareBtn.png')} style={styles.HomeScreenButton} />
+            </TouchableOpacity>
             </View>
         </View>
         <WebView
           ref={webViewRef}
           source={{ uri: 'https://autoformsandsupplies.cld.bz/AUTO-CAT-2021' }}
-          // source={{ uri: 'https://google.com' }}
           javaScriptEnabled = {true}
           onMessage={(event) => {
             const data = JSON.parse(event.nativeEvent.data);
             if (data.url) {
               console.log('Current URL:', data.url);
-              Linking.openURL("mailto:wkstart@startadvertising.com?subject=Products you are interested in&body=Check out this link: https://autoformsandsupplies.com?appLink=" + data.url);
-            }
+              Alert.alert('Share Link', '', [
+                {
+                  text: 'SMS', onPress: () => Linking.openURL("sms:?body=Check out this link: https://autoformsandsupplies.com?appLink=" + data.url)
+                },
+                {
+                  text: 'EMAIL', onPress: () => Linking.openURL("mailto:wkstart@startadvertising.com?subject=Products you are interested in&body=Check out this link: https://autoformsandsupplies.com?appLink=" + data.url)                ,
+                },
+                {
+                  text: 'Cancel', onPress: () => console.log('Cancel')                ,
+                }
+              ]);  }
           }}
         />
-        <Button title="Get Current URL" onPress={handleGetUrl} />
       </View>
   );
 }
@@ -267,10 +267,8 @@ function SendPhotoScreen({ navigation }) {
 
 
 function BeSocialScreen({ navigation }) {
-  
 // SEND SOCIAL PHOTO
   return (
-    
     <View style={styles.container}>
 	<View style={{ height:50, backgroundColor: 'red' }} />
 <View style={{flexDirection: 'row'}}>
@@ -287,8 +285,6 @@ function BeSocialScreen({ navigation }) {
    </View>
 </View>
       <Image source={require('./assets/aspBanner.png')} style={styles.SendPhotoBanner} />
-
-
       <Text style={{marginTop:20}}>Use this feature to send us a photo for use on ASP social media! For example, share a photo of a neat idea you handled for a dealer and then watch us on LinkedIn and Facebook to see ideas from others. </Text>
       <Button style={styles.button}
         title="Send Photo"
@@ -312,7 +308,6 @@ function BeSocialScreen({ navigation }) {
 function ContactUsScreen({ navigation }) {
 // Contact Us Screen
   return (
-
       <ScrollView style={{flex: 1,flexDirection: 'column', backgroundColor:'white'}}>
 		  <View style={{ height:50, backgroundColor: 'red' }} />
 	  <View style={{flexDirection: 'row'}}>
@@ -397,7 +392,6 @@ function ContactUsScreen({ navigation }) {
 const Stack = createNativeStackNavigator();
 
 function App() {
-
   return (
     <NavigationContainer screenOptions={{headerTransparent: true}} >
       <Stack.Navigator initialRouteName="Home" screenOptions={{headerShown: false, headerTransparent: true}}>
