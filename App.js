@@ -99,20 +99,20 @@ function HomeScreen({ navigation }) {
   contentContainerStyle={styles.contentContainer}
   >
 	    <View style={{width: width, marginBottom: 50}}>
-			<View style={{ height:50, backgroundColor: 'red' }} />
-			<View style={{flexDirection: 'row'}}>
+			{/* <View style={{ height:50, backgroundColor: 'red' }} /> */}
+			{/* <View style={{flexDirection: 'row'}}>
 			   {/* <View style={{width: '20%', height:100, justifyContent:'center'}} >
 				   <TouchableOpacity
 					 onPress={() =>{navigation.push('BrandsScreen')}}>
 				   <Image source={require('./assets/backArrow.png')} style={{alignSelf:'flex-start'}}/>
 				   </TouchableOpacity>
 			   </View> */}
-		   	   <View style={{width: '100%', height:100, justifyContent:'center'}} >
+		   	   {/* <View style={{width: '100%', height:100, justifyContent:'center'}} >
 				    <Text style={{alignSelf:'center', fontSize:20}}>
 				    Menu
 				    </Text>
-			     </View>
-		  	</View>
+			     </View> */}
+		  	{/* </View> */}
 		        <Image source={require('./assets/aspBanner.png')} style={styles.logoBanner} />
 
 
@@ -134,22 +134,10 @@ function HomeScreen({ navigation }) {
 		        </TouchableOpacity>
 
 
-		        <TouchableOpacity
-		          onPress={() =>{navigation.push('SendPhoto')}}>
-		        <Image source={require('./assets/sendBtn.png')} style={styles.HomeScreenButton}/>
-		        </TouchableOpacity>
-
-
-		        <TouchableOpacity
-		          onPress={() =>{navigation.push('BeSocial')}}>
-		        <Image source={require('./assets/socialBtn.png')} style={styles.HomeScreenButton}/>
-		        </TouchableOpacity>
-
-
-		        <TouchableOpacity
-		          onPress={() =>{navigation.push('ContactUs')}}>
-		        <Image source={require('./assets/contactBtn.png')} style={styles.HomeScreenButton}/>
-		        </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() =>{ WebBrowser.openBrowserAsync("https://www.google.com/maps/search/?api=1&query=Automotive+Dealerships+near+me")}}>
+            <Image source={require('./assets/lookupBtn.png')} style={styles.HomeScreenButton}/>
+            </TouchableOpacity>
 
 
             <TouchableOpacity
@@ -157,10 +145,14 @@ function HomeScreen({ navigation }) {
             <Image source={require('./assets/ourBrandsBtn.png')} style={styles.HomeScreenButton}/>
             </TouchableOpacity>
 
+            <TouchableOpacity
+              onPress={() =>{navigation.push('ContactUs')}}>
+            <Image source={require('./assets/contactBtn.png')} style={styles.HomeScreenButton}/>
+            </TouchableOpacity>
 
             <TouchableOpacity
-		          onPress={() =>{ WebBrowser.openBrowserAsync("https://www.google.com/maps/search/?api=1&query=Automotive+Dealerships+near+me")}}>
-            <Image source={require('./assets/lookupBtn.png')} style={styles.HomeScreenButton}/>
+              onPress={() =>{navigation.push('BeSocial')}}>
+            <Image source={require('./assets/socialBtn.png')} style={styles.HomeScreenButton}/>
             </TouchableOpacity>
 	    </View>
       </ScrollView>
@@ -220,13 +212,13 @@ function CatSearchScreen({ navigation }) {
               console.log('Current URL:', data.url);
               Alert.alert('Share Link', '', [
                 {
-                  text: 'SMS', onPress: () => Linking.openURL("sms:?body=Check out this link: https://autoformsandsupplies.com?appLink=" + data.url)
+                  text: 'SMS', onPress: () => Linking.openURL("sms:?body=Here is the informationm you requested.: https://autoformsandsupplies.com?appLink=" + data.url)
                 },
                 {
-                  text: 'EMAIL', onPress: () => Linking.openURL("mailto:wkstart@startadvertising.com?subject=Products you are interested in&body=Check out this link: https://autoformsandsupplies.com?appLink=" + data.url)                ,
+                  text: 'EMAIL', onPress: () => Linking.openURL("mailto:wkstart@startadvertising.com?subject=Here is the information you requested&body=Here is the information you requested: https://autoformsandsupplies.com?appLink=" + data.url)
                 },
                 {
-                  text: 'Cancel', onPress: () => console.log('Cancel')                ,
+                  text: 'Cancel', onPress: () => console.log('Cancel')
                 }
               ]);  }
           }}
@@ -234,37 +226,6 @@ function CatSearchScreen({ navigation }) {
       </View>
   );
 }
-
-
-function SendPhotoScreen({ navigation }) {
-// SEND PHOTO SCREEN
-  return (
-    <View style={styles.container}>
-	<View style={{ height:50, backgroundColor: 'red' }} />
-<View style={{flexDirection: 'row'}}>
-   <View style={{width: '20%', height:100, justifyContent:'center'}} >
-
-   <TouchableOpacity
-			  onPress={() =>{navigation.push('Home')}}>
-				<Image source={require('./assets/hamburgerMenu.png')} style={{alignSelf:'flex-end'}} />
-			</TouchableOpacity>
-   </View>
-   <View style={{width: '60%', height:100, justifyContent:'center'}} >
-   <Text style={{alignSelf:'center', fontSize:20}}>
-   Send a Photo
-   </Text>
-   </View>
-</View>
-      <Image source={require('./assets/aspBanner.png')} style={styles.SendPhotoBanner} />
-
-      <Text>Use this feature to send us a photo of any item requested by your customer that you cannot find! Our research team will find it and handle the order!</Text>
-      <Button style={styles.button}
-        title="Send Photo"
-        onPress={() => Linking.openURL("mailto:CustomerService@AutoServiceProducts.com") }/>
-    </View>
-  );
-}
-
 
 function BeSocialScreen({ navigation }) {
 // SEND SOCIAL PHOTO
@@ -278,26 +239,26 @@ function BeSocialScreen({ navigation }) {
 				<Image source={require('./assets/hamburgerMenu.png')} style={{alignSelf:'flex-end'}} />
 			</TouchableOpacity>
    </View>
-   <View style={{width: '60%', height:100, justifyContent:'center'}} >
+   {/* <View style={{width: '60%', height:100, justifyContent:'center'}} >
    <Text style={{alignSelf:'center', fontSize:20}}>
    Be Social
    </Text>
-   </View>
+   </View> */}
 </View>
       <Image source={require('./assets/aspBanner.png')} style={styles.SendPhotoBanner} />
-      <Text style={{marginTop:20}}>Use this feature to send us a photo for use on ASP social media! For example, share a photo of a neat idea you handled for a dealer and then watch us on LinkedIn and Facebook to see ideas from others. </Text>
+      <Text style={{marginTop:20, marginBottom:100}}>Use this feature to send us a photo for use on ASP social media! For example, share a photo of a neat idea you handled for a dealer and then watch us on LinkedIn and Facebook to see ideas from others. </Text>
       <Button style={styles.button}
         title="Send Photo"
         onPress={() => Linking.openURL('mailto:CustomerService@AutoServiceProducts.com') }/>
       <Text>*Submission of a photo constitutes your permission for its publication on ASP social media.</Text>
-      <View style={{justifyContent: 'center', flexDirection:'row'}}>
+      <View style={{justifyContent: 'center', flexDirection:'row', marginTop: 100}}>
       <TouchableOpacity
       onPress={() => Linking.openURL('https://www.facebook.com/AutoServiceProducts')}>
-      <Image source={require('./assets/f_logo_RGB-Blue_58.png')} style={{alignSelf:'center'}}/>
+      <Image source={require('./assets/f_logo_RGB-Blue_58.png')} style={{alignSelf:'center', alignItems: 'baseline', height:70, resizeMode: 'contain'}}/>
       </TouchableOpacity>
       <TouchableOpacity
       onPress={() => Linking.openURL('https://www.linkedin.com/company/automotive-service-products/about/')}>
-      <Image source={require('./assets/LinkedIn.png')} style={{alignSelf:'center'}}/>
+      <Image source={require('./assets/LinkedIn.png')} style={{alignSelf:'center', alignItems: 'baseline', height:70, resizeMode: 'contain'}}/>
       </TouchableOpacity>
       </View>
     </View>
@@ -317,11 +278,11 @@ function ContactUsScreen({ navigation }) {
 				<Image source={require('./assets/hamburgerMenu.png')} style={{alignSelf:'flex-end'}} />
 			</TouchableOpacity>
 		 </View>
-		 <View style={{width: '60%', height:100, justifyContent:'center'}} >
+		 {/* <View style={{width: '60%', height:100, justifyContent:'center'}} >
 		 <Text style={{alignSelf:'center', fontSize:20}}>
 		 Contact Us
 		 </Text>
-		 </View>
+		 </View> */}
 	</View>
 		  <Image source={require('./assets/aspBanner.png')} style={styles.logoBanner, {width:'100%', height:180}} />
         <View style={styles.contactLabels}>
@@ -398,7 +359,6 @@ function App() {
         <Stack.Screen name="BrandsScreen" component={BrandsScreen}/>
         <Stack.Screen name="Home" component={HomeScreen}/>
         <Stack.Screen name="CatSearchScreen" component={CatSearchScreen}/>
-        <Stack.Screen name="SendPhoto" component={SendPhotoScreen} />
         <Stack.Screen name="BeSocial" component={BeSocialScreen} />
         <Stack.Screen name="ContactUs" component={ContactUsScreen} />
       </Stack.Navigator>
@@ -434,8 +394,9 @@ const styles = StyleSheet.create({
   },
   logoBanner: {
     width: '100%',
-    height: '20%',
+    height: 200,
     top:0,
+    resizeMode:'contain',
   },
   close: {
     alignSelf:'flex-start',
@@ -469,10 +430,11 @@ const styles = StyleSheet.create({
     top:0,
   },
   TopHomeScreenButton: {
-	width:'80%',
-    marginTop:10,
+	width:300,
+  height: 70,
+    // marginTop:10,
     alignSelf: 'center',
-    width: 350,
+    // width: 350,
     resizeMode: 'contain',
   },
   brandsScreenButton: {

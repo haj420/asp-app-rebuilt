@@ -2,7 +2,7 @@
   "expo": {
     "name": "ASP",
     "slug": "ASP",
-    "version": "5.0.1",
+    "version": "7.0.1",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -17,7 +17,7 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.autoformsandsupplies.asp",
-      "buildNumber": "5.0.1"
+      "buildNumber": "7.0.1"
     },
     "android": {
       "adaptiveIcon": {
@@ -25,13 +25,13 @@
         "backgroundColor": "#ffffff"
       },
       "package": "com.autoformsandsupplies.asp",
-      "versionCode": 6
+      "versionCode": 7
     },
     "runtimeVersion": {
       "policy": "appVersion"
     },
     "updates": {
-      "url": "https://u.expo.dev/c3012e31-593c-4eb3-ab2f-8f15f4fb86fc"
+      "url": "https://u.expo.dev/45572ecb-125d-40bf-be7b-caf0e4dac577"
     },
     "extra": {
       "eas": {
