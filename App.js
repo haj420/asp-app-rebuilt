@@ -335,14 +335,26 @@ function ContactUsScreen({ navigation }) {
            <TouchableOpacity onPress={() => Linking.openURL('mailto:artwork@AutoServiceProducts.com') }>
             <Text style={styles.contactText, {textDecorationLine:'underline'}}>artwork@autoserviceproducts.com</Text>
            </TouchableOpacity>
-            <Text style= {styles.contactAddyH1}>MAILING ADDRESS</Text>
-            <Text style= {styles.contactText}>Automotive Service Products</Text>
-            <Text style= {styles.contactText}>P.O. Box 951</Text>
-           <Text style= {styles.contactText}>Burlington, KY 41005</Text>
 
-           <Text style= {styles.contactAddyH1}>SHIPPING ADDRESS</Text>
+           <Text style={styles.contactH2}>Customs</Text>
+           <TouchableOpacity onPress={() => Linking.openURL('mailto:customs@AutoServiceProducts.com') }>
+            <Text style={styles.contactText, {textDecorationLine:'underline'}}>customs@autoserviceproducts.com</Text>
+           </TouchableOpacity>
+
+           <Text style={styles.contactH2}>Quotes</Text>
+           <TouchableOpacity onPress={() => Linking.openURL('mailto:quotes@AutoServiceProducts.com') }>
+            <Text style={styles.contactText, {textDecorationLine:'underline'}}>quotes@autoserviceproducts.com</Text>
+           </TouchableOpacity>
+
+            <Text style= {styles.contactAddyH1}>Headquarters Customer Service</Text>
+            <Text style= {styles.contactH2}>Warehouse Production</Text>
+            <Text style= {styles.contactText}>Automotive Service Products</Text>
+            <Text style= {styles.contactText}>10350 Toebben Drive</Text>
+           <Text style= {styles.contactText}>Independence, KY 41051</Text>
+
+           <Text style= {styles.contactH2}>Payments</Text>
            <Text style= {styles.contactText}>Automotive Service Products</Text>
-           <Text style= {styles.contactText}>1574 Production Drive</Text>
+           <Text style= {styles.contactText}>PO Box 942</Text>
            <Text style= {styles.contactText}>Burlington, KY 41005</Text>
         </View>
       </ScrollView>

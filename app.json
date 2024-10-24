@@ -25,7 +25,7 @@
         "backgroundColor": "#ffffff"
       },
       "package": "com.autoformsandsupplies.asp",
-      "versionCode": 7
+      "versionCode": 8
     },
     "runtimeVersion": {
       "policy": "appVersion"
